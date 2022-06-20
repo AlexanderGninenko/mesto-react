@@ -12,7 +12,7 @@ function PopupWithForm(props) {
             {props.buttonText}
           </button>
         </form>
-        <button type="button" className="popup__close-icon opacity"></button>
+        <button onClick={props.onClose} type="button" className="popup__close-icon opacity"></button>
       </div>
     </div>
   );

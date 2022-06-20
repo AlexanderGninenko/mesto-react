@@ -27,6 +27,12 @@ function App() {
     setisAddPlacePopupOpen(true);
   };
 
+  const closeAllPopups = () => {
+    setisEditAvatarPopupOpen(false);
+    setisEditProfilePopupOpen(false);
+    setisAddPlacePopupOpen(false);
+  }
+
   return (
     <body className="page">
       <Header />
@@ -37,16 +43,18 @@ function App() {
       />
 
       <EditProfilePopup 
-      isOpen={isEditProfilePopupOpen}/>
+      isOpen={isEditProfilePopupOpen}
+      onClose = {closeAllPopups}/>
 
       <EditAvatarPopup 
-      isOpen={isEditAvatarPopupOpen}/>
+      isOpen={isEditAvatarPopupOpen}
+      onClose = {closeAllPopups}/>
 
-      <ConfirmDeletePopup 
-    
-/>
+      <ConfirmDeletePopup />
+
       <AddPlacePopup 
-      isOpen={isAddPlacePopupOpen}/>
+      isOpen={isAddPlacePopupOpen}
+      onClose = {closeAllPopups}/>
 
       <ImagePopup />
 

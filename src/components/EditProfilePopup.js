@@ -1,9 +1,9 @@
-function EditProfilePopup() {
+import PopupWithForm from "./PopupWithForm";
+
+function EditProfilePopup(props) {
   return (
-    <div className="popup popup_profile">
-      <div className="popup__container">
-        <form className="popup__form" name="popupProfileForm" novalidate>
-          <h2 className="popup__title">Редактировать профиль</h2>
+    <PopupWithForm name='profile' title='Редактировать профиль' buttonText='Сохранить' isOpen={props.isOpen} onClose={props.onClose}>
+   
           <input
             id="profile-name-input"
             className="popup__input popup__input_profile_name"
@@ -25,16 +25,8 @@ function EditProfilePopup() {
           ></input>
           <span className="profile-status-input-error popup__input-error"></span>
 
-          <button
-            type="submit"
-            className="popup__save-btn popup__save-btn_profile"
-          >
-            Сохранить
-          </button>
-        </form>
-        <button type="button" className="popup__close-icon opacity"></button>
-      </div>
-    </div>
+   
+    </PopupWithForm>
   );
 }
 

@@ -1,9 +1,9 @@
-function AddPlacePopup() {
+import PopupWithForm from "./PopupWithForm";
+
+function AddPlacePopup(props) {
   return (
-    <div className="popup popup_place">
-      <div className="popup__container">
-        <form className="popup__form " name="popupPlaceForm" novalidate>
-          <h2 className="popup__title">Новое место</h2>
+    <PopupWithForm name='place' title='Новое место' buttonText='Создать' isOpen={props.isOpen} onClose={props.onClose}>
+    
           <input
             id="place-name-input"
             className="popup__input popup__input_place_name"
@@ -26,16 +26,7 @@ function AddPlacePopup() {
           ></input>
           <span className="place-link-input-error popup__input-error"></span>
 
-          <button
-            type="submit"
-            className="popup__save-btn popup__save-btn_place"
-          >
-            Создать
-          </button>
-        </form>
-        <button type="button" className="popup__close-icon opacity"></button>
-      </div>
-    </div>
+    </PopupWithForm>
   );
 }
 
