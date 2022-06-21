@@ -60,7 +60,7 @@ function Main(props) {
       <section className="photo-grid">
         <ul className="photo-grid__wrapper">
           {cards.map((card) => (
-            <Card key={card._id} card={card} onCardClick={props.onCardClick}/>
+            <Card key={card._id} card={card} onCardClick={props.onCardClick} onCardDelete={props.onCardDelete}/>
           ))}
         </ul>
       </section>

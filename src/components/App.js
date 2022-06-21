@@ -12,6 +12,7 @@ function App() {
   const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = React.useState(false);
+  const [isConfirmDeletePopupOpen, setisConfirmDeletePopupOpen] = React.useState(false);
 
   const [selectedCard, setSelectedCard] = React.useState(null);
 
@@ -31,10 +32,15 @@ function App() {
     setisAddPlacePopupOpen(true);
   };
 
+  const handleConfirmDeleteClick = ()=> {
+    setisConfirmDeletePopupOpen(true);
+  }
+
   const closeAllPopups = () => {
     setisEditAvatarPopupOpen(false);
     setisEditProfilePopupOpen(false);
     setisAddPlacePopupOpen(false);
+    setisConfirmDeletePopupOpen(false);
     setSelectedCard(null);
   };
 
@@ -46,6 +52,7 @@ function App() {
         onAddPlace={handleAddPlaceClick}
         onEditAvatar={handleEditAvatarClick}
         onCardClick={handleCardClick}
+        onCardDelete={handleConfirmDeleteClick}
       />
 
       <EditProfilePopup
@@ -58,7 +65,10 @@ function App() {
         onClose={closeAllPopups}
       />
 
-      <ConfirmDeletePopup />
+      <ConfirmDeletePopup 
+      isOpen={isConfirmDeletePopupOpen}
+      onClose={closeAllPopups}
+      />
 
       <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
 

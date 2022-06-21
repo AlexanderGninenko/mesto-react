@@ -11,6 +11,7 @@ function EditProfilePopup(props) {
             name="profileFormName"
             minLength="2"
             maxLength="40"
+            placeholder="Введите имя"
             required
           ></input>
           <span className="profile-name-input-error popup__input-error"></span>
@@ -21,6 +22,7 @@ function EditProfilePopup(props) {
             name="profileFormStatus"
             minLength="2"
             maxLength="200"
+            placeholder="Введите статус"
             required
           ></input>
           <span className="profile-status-input-error popup__input-error"></span>
