@@ -1,32 +1,35 @@
 import React from "react";
 import { api } from "../utils/Api";
-
-
+import Card from "./Card";
 
 function Main(props) {
-
-  const [userName, setUserName] = React.useState('');
-  const [userDescription, setUserDescription] = React.useState('');
-  const [userAvatar, setUserAvatar] = React.useState('');
+  const [userName, setUserName] = React.useState("");
+  const [userDescription, setUserDescription] = React.useState("");
+  const [userAvatar, setUserAvatar] = React.useState("");
+  const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    api.getUserInfo()
-    .then((data)=> {
-      const userData = data;
-      console.log(userData);
-      setUserName(userData.name);
-      setUserDescription(userData.about);
-      setUserAvatar(userData.avatar);
-    })
-    
-  })
+    api
+      .getAllNeededData()
+      .then(([cards, userData]) => {
+        setUserName(userData.name);
+        setUserDescription(userData.about);
+        setUserAvatar(userData.avatar);
+        setCards(cards);
+      })
+      .catch((err) => console.log(err));
+  });
 
   return (
     <main className="wrapper">
       <section className="profile">
         <div className="profile__info">
           <div className="profile__avatar-wrapper">
-            <img src='#' alt="Фото профиля" className="profile__avatar" style={{ backgroundImage: `url(${userAvatar})` }}></img>
+            <img
+              src={userAvatar}
+              alt="Фото профиля"
+              className="profile__avatar"
+            ></img>
             <button
               onClick={props.onEditAvatar}
               type="button"
@@ -55,7 +58,11 @@ function Main(props) {
         ></button>
       </section>
       <section className="photo-grid">
-        <ul className="photo-grid__wrapper"></ul>
+        <ul className="photo-grid__wrapper">
+          {cards.map((card) => (
+            <Card key={card._id} card={card} onCardClick={props.onCardClick}/>
+          ))}
+        </ul>
       </section>
     </main>
   );

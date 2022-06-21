@@ -10,8 +10,8 @@ function AddPlacePopup(props) {
             type="text"
             name="name"
             placeholder="Название"
-            minlength="1"
-            maxlength="30"
+            minLength="1"
+            maxLength="30"
             required
           ></input>
           <span className="place-name-input-error popup__input-error"></span>

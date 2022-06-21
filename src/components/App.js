@@ -9,11 +9,15 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import EditProfilePopup from "./EditProfilePopup";
 
 function App() {
-  const [isEditProfilePopupOpen, setisEditProfilePopupOpen] =
-    React.useState(false);
+  const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] =
-    React.useState(false);
+  const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = React.useState(false);
+
+  const [selectedCard, setSelectedCard] = React.useState(null);
+
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+  };
 
   const handleEditAvatarClick = () => {
     setisEditAvatarPopupOpen(true);
@@ -31,48 +35,37 @@ function App() {
     setisEditAvatarPopupOpen(false);
     setisEditProfilePopupOpen(false);
     setisAddPlacePopupOpen(false);
-  }
+    setSelectedCard(null);
+  };
 
   return (
-    <body className="page">
+    <div className="page">
       <Header />
       <Main
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
         onEditAvatar={handleEditAvatarClick}
+        onCardClick={handleCardClick}
       />
 
-      <EditProfilePopup 
-      isOpen={isEditProfilePopupOpen}
-      onClose = {closeAllPopups}/>
+      <EditProfilePopup
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
+      />
 
-      <EditAvatarPopup 
-      isOpen={isEditAvatarPopupOpen}
-      onClose = {closeAllPopups}/>
+      <EditAvatarPopup
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
+      />
 
       <ConfirmDeletePopup />
 
-      <AddPlacePopup 
-      isOpen={isAddPlacePopupOpen}
-      onClose = {closeAllPopups}/>
+      <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
 
-      <ImagePopup />
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
 
       <Footer />
-      <template id="card-template">
-        <li className="card">
-          <button className="card__delete-btn" type="button"></button>
-          <img src="." alt="" className="card__image"></img>
-          <div className="card__description">
-            <h2 className="card__title"></h2>
-            <div className="card__like-wrapper">
-              <button className="card__like-btn" type="button"></button>
-              <span className="card__like-count">0</span>
-            </div>
-          </div>
-        </li>
-      </template>
-    </body>
+    </div>
   );
 }
 
