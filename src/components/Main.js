@@ -18,7 +18,7 @@ function Main(props) {
         setCards(cards);
       })
       .catch((err) => console.log(err));
-  });
+  },[]);
 
   return (
     <main className="wrapper">
