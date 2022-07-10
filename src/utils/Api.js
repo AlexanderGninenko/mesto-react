@@ -32,8 +32,8 @@ class Api {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
-          name: userData.profileFormName,
-          about: userData.profileFormStatus
+          name: userData.name,
+          about: userData.about
         })
       })
       .then(this._checkResponse)
@@ -50,18 +50,10 @@ class Api {
       })
       .then(this._checkResponse)
     }
-  
-    like(id) {
+
+    changeLikeCardStatus(id, isLiked) {
       return fetch(this._url + `/cards/likes/${id}`, {
-        method: 'PUT',
-        headers: this._headers
-      })
-      .then(this._checkResponse)
-    }
-  
-    dislike(id) {
-      return fetch(this._url + `/cards/likes/${id}`, {
-        method: 'DELETE',
+        method: `${isLiked ? 'PUT' : 'DELETE'}`,
         headers: this._headers
       })
       .then(this._checkResponse)
@@ -80,7 +72,7 @@ class Api {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
-          avatar: data.userAvatar,
+          avatar: data.avatar,
         })
       })
       .then(this._checkResponse)
