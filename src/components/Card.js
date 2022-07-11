@@ -5,6 +5,12 @@ function Card(props) {
   function handleClick() {
     props.onCardClick(props.card);
   }
+
+
+  function handleDeleteClick() {
+    props.onConfirmCardDelete(props.card)
+  }
+
   const currentUser = React.useContext(CurrentUserContext);
 
   const isOwn = props.card.owner._id === currentUser._id;
@@ -21,10 +27,6 @@ function Card(props) {
 
   function handleLikeClick() {
     props.onCardLike(props.card)
-  }
-
-  function handleDeleteClick() {
-    props.onCardDelete(props.card)
   }
 
   return (

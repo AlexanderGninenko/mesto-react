@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup(props) {
@@ -21,6 +21,11 @@ function AddPlacePopup(props) {
     setLink(e.target.value);
   }
 
+  useEffect(()=> {
+    setName('');
+    setLink('');
+  },[props.isOpen])
+
   return (
     <PopupWithForm
       name="place"
@@ -40,6 +45,7 @@ function AddPlacePopup(props) {
         maxLength="30"
         required
         onChange={handleNameChange}
+        value={name}
       ></input>
       <span className="place-name-input-error popup__input-error"></span>
 
@@ -51,6 +57,7 @@ function AddPlacePopup(props) {
         placeholder="Ссылка на картинку"
         required
         onChange={handleLinkChange}
+        value={link}
       ></input>
       <span className="place-link-input-error popup__input-error"></span>
     </PopupWithForm>
