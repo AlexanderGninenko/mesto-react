@@ -33,6 +33,7 @@ function EditProfilePopup(props) {
       title="Редактировать профиль"
       buttonText="Сохранить"
       isOpen={props.isOpen}
+      isLoading={props.isLoading}
       onClose={props.onClose}
       onSubmit={handleSubmit}
     >

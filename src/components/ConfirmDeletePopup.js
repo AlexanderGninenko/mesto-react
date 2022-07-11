@@ -10,8 +10,8 @@ function ConfirmDeletePopup(props) {
     <PopupWithForm
       name="confirm-delete"
       title="Вы уверены?"
-      buttonText="Да"
       isOpen={props.isOpen}
+      buttonText= {props.isLoading ? 'Подождите...' : 'Да'}
       onClose={props.onClose}
       onSubmit={handleSubmit}
     ></PopupWithForm>

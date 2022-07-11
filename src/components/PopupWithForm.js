@@ -11,7 +11,7 @@ function PopupWithForm(props) {
             className={`popup__save-btn popup__save-btn_${props.name}`}
             
           >
-            {props.buttonText}
+            {props.isLoading ? 'Сохранение...' : props.buttonText}
           </button>
         </form>
         <button onClick={props.onClose} type="button" className="popup__close-icon opacity"></button>
